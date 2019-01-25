@@ -87,33 +87,24 @@ machine_learning_map we can try out the below mentioned algorithms.
 - K-Neighbours Classifier
 """
 
-#import the necessary modules
-from sklearn.svm import LinearSVC
+#import necessary modules
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 
-#create an object of type LinearSVC
-svc_model = LinearSVC(random_state=5)
+#create object of the classifier
+neigh = KNeighborsClassifier(n_neighbors=3)
 
-#train the algorithm on training data and predict using the testing data
-pred = svc_model.fit(data_train, target_train).predict(data_test)
+#Train the algorithm
+neigh.fit(data_train, target_train)
 
-#print the accuracy score of the model
+# predict the response
+pred = neigh.predict(data_test)
+
+# evaluate accuracy
 print ("****-------------------**** ------------ **** --------------****")
-print("LinearSVC accuracy : ",accuracy_score(target_test, pred, normalize = True))
+print ("KNeighbors accuracy score : ",accuracy_score(target_test, pred))
 print ("****-------------------**** ------------ **** --------------****")
 
-"""
-Plot using yelowbrick module
-"""
-
-from yellowbrick.classifier import ClassificationReport
-
-# Instantiate the classification model and visualizer
-visualizer = ClassificationReport(svc_model, classes=['Won','Loss'])
-
-visualizer.fit(data_train, target_train)  # Fit the training data to the visualizer
-visualizer.score(data_test, target_test)  # Evaluate the model on the test data
-g = visualizer.poof()             # Draw/show/poof the data
 
 """
 # set the background colour of the plot to white

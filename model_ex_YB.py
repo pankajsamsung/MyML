@@ -86,6 +86,7 @@ machine_learning_map we can try out the below mentioned algorithms.
 - Linear SVC
 - K-Neighbours Classifier
 """
+
 #import the necessary modules
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
@@ -117,6 +118,25 @@ print("LinearSVC accuracy : ",accuracy_score(target_test, pred2, normalize = Tru
 print ("****-------------------**** ------------ **** --------------****")
 print ("KNeighbors accuracy score : ",accuracy_score(target_test, pred3))
 print ("****-------------------**** ------------ **** --------------****")
+
+
+"""
+Plot accuracy with YelloBrick 
+
+"""
+
+from yellowbrick.classifier import ClassificationReport
+
+# Instantiate the classification model and visualizer
+visualizer1 = ClassificationReport(gnb, classes=['Won','Loss'])
+visualizer2 = ClassificationReport(svc_model, classes=['Won','Loss'])
+visualizer3 = ClassificationReport(neigh, classes=['Won','Loss'])
+
+visualizer1.fit(data_train, target_train)  # Fit the training data to the visualizer
+visualizer1.score(data_test, target_test)  # Evaluate the model on the test data
+g = visualizer1.poof()             # Draw/show/poof the data
+#g = visualizer2.poof()             # Draw/show/poof the data
+#g = visualizer3.poof()             # Draw/show/poof the data
 
 
 """

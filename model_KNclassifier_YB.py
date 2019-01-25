@@ -105,6 +105,19 @@ print ("****-------------------**** ------------ **** --------------****")
 print ("KNeighbors accuracy score : ",accuracy_score(target_test, pred))
 print ("****-------------------**** ------------ **** --------------****")
 
+"""
+Plot accuracy with YelloBrick 
+
+"""
+
+from yellowbrick.classifier import ClassificationReport
+
+# Instantiate the classification model and visualizer
+visualizer = ClassificationReport(neigh, classes=['Won','Loss'])
+
+visualizer.fit(data_train, target_train)  # Fit the training data to the visualizer
+visualizer.score(data_test, target_test)  # Evaluate the model on the test data
+g = visualizer.poof()             # Draw/show/poof the data
 
 """
 # set the background colour of the plot to white

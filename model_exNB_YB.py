@@ -102,6 +102,19 @@ print ("****-------------------**** ------------ **** --------------****")
 print("Naive-Bayes accuracy : ",accuracy_score(target_test, pred, normalize = True))
 print ("****-------------------**** ------------ **** --------------****")
 
+"""
+Performance Comparison
+In the previous sections we have used the accuracy_score() method to measure the accuracy of the different algorithms. Now, we will use the ClassificationReport class provided by the Yellowbrick library to give us a visual report of how our models perform.
+
+"""
+from yellowbrick.classifier import ClassificationReport
+
+# Instantiate the classification model and visualizer
+visualizer = ClassificationReport(gnb, classes=['Won','Loss'])
+
+visualizer.fit(data_train, target_train)  # Fit the training data to the visualizer
+visualizer.score(data_test, target_test)  # Evaluate the model on the test data
+g = visualizer.poof()  
 
 """
 # set the background colour of the plot to white

@@ -101,7 +101,8 @@ pred = gnb.fit(data_train, target_train).predict(data_test)
 print ("****-------------------**** ------------ **** --------------****")
 print("Naive-Bayes accuracy : ",accuracy_score(target_test, pred, normalize = True))
 print ("****-------------------**** ------------ **** --------------****")
-
+print("LinearSVC accuracy : ",accuracy_score(target_test, pred, normalize = True))
+print ("****-------------------**** ------------ **** --------------****")
 
 """
 # set the background colour of the plot to white

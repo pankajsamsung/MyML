@@ -92,7 +92,7 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
 
 #create an object of type LinearSVC
-svc_model = LinearSVC(random_state=5)
+svc_model = LinearSVC(random_state=0)
 
 #train the algorithm on training data and predict using the testing data
 pred = svc_model.fit(data_train, target_train).predict(data_test)
